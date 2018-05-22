@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+displayName: allAvailableControls
+description: list of all rules and control types available for the given primaryAccountNumber or documentID.
+properties: 
+  merchantTypeRules:
+    required: false
+    type: !include merchantTypeRulesType.raml
+  ruleCategories:
+    required: false
+    type: !include ruleCategoriesType.raml
+  transactionTypeRules:
+    required: false
+    type: !include transactionTypeRulesType.raml

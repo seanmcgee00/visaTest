@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+displayName: changeHistoryResource
+description: Response resource container.
+properties:
+  responseMessage:
+    required: false
+    type: string
+  controlDocuments:
+    required: false
+    type: !include baseTypes/changeHistoryControlDocumentsType.raml

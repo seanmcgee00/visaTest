@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+displayName: cardDetailType
+description: The cardDetails should be provided, only if you want to set up controls and restrict access based on Cardholder Name or card sequence number. If used, the processor must also provide the same data from the transaction when invoking the decision request and the authorization engine will attempt to use thes details to locate a transaction control. If the data is not matched from the transaction data, then the control will not affect the transaction.
+properties: 
+  nameOnCard:
+    required: false
+    type: !include nameOnCardType.raml
+  sequenceOnCard:
+    required: false
+    type: !include sequenceOnCardType.raml

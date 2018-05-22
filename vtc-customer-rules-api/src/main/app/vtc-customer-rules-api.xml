@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:tls="http://www.mulesoft.org/schema/mule/tls"
+	xmlns:json="http://www.mulesoft.org/schema/mule/json"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/apikit" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/tls http://www.mulesoft.org/schema/mule/tls/current/mule-tls.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/apikit http://www.mulesoft.org/schema/mule/apikit/current/mule-apikit.xsd
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+    <http:listener-config name="vtc-customer-rules-api-httpListenerConfig" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
+    <apikit:config name="vtc-customer-rules-api-config" raml="vtc-customer-rules-api.raml" consoleEnabled="false" doc:name="Router"/>
+    <http:request-config name="sandboxCall" protocol="HTTPS" host="sandbox.api.visa.com" port="443" basePath="/vctc/customerrules/v1" doc:name="HTTP Request Configuration">
+        <http:basic-authentication username="6XVK0LO0Y1O4648ACCPE21mAQITUuIzkmC-YiGm4p0ZkYzty0" password="k1u013yLGV6W1zZNJ4U8xW4" preemptive="true"/>
+        <tls:context>
+            <tls:key-store type="jks" path="myapp_keyAndCertBundle.jks" alias="1" keyPassword="gears00" password="gears00"/>
+        </tls:context>
+    </http:request-config>
+    <flow name="vtc-customer-rules-api-main">
+        <http:listener config-ref="vtc-customer-rules-api-httpListenerConfig" path="/api/*" doc:name="HTTP"/>
+        <apikit:router config-ref="vtc-customer-rules-api-config" doc:name="APIkit Router"/>
+        <exception-strategy ref="vtc-customer-rules-api-apiKitGlobalExceptionMapping" doc:name="Reference Exception Strategy"/>
+    </flow>
+    <flow name="vtc-customer-rules-api-console">
+        <http:listener config-ref="vtc-customer-rules-api-httpListenerConfig" path="/console/*" doc:name="HTTP"/>
+        <apikit:console config-ref="vtc-customer-rules-api-config" doc:name="APIkit Console"/>
+    </flow>
+    <flow name="put:/applications/configuration:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="put:/consumertransactioncontrols/{documentID}/rules:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="delete:/consumertransactioncontrols/accounts/accountupdate:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="delete:/consumertransactioncontrols/{documentID}/rules:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="delete:/consumertransactioncontrols/{documentID}:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="get:/applications/configuration:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="get:/consumertransactioncontrols/{documentID}/controlHistory:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="get:/consumertransactioncontrols/{documentID}/rules:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="post:/consumertransactioncontrols/walletservices/accountinquiry:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="post:/consumertransactioncontrols/accounts/accountupdate:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="post:/consumertransactioncontrols/batch:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="post:/configuration/cardinquiry:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="post:/transactiontypecontrols/cardinquiry:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="post:/merchanttypecontrols/cardinquiry:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="post:/consumertransactioncontrols/inquiries/cardinquiry:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="post:/consumertransactioncontrols:application/json:vtc-customer-rules-api-config">
+        <logger message="----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="post:/consumertransactioncontrols/controlHistory:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+    </flow>
+    <flow name="post:/consumertransactioncontrols/{documentID}/rules:application/json:vtc-customer-rules-api-config">
+        <logger message="-----&gt; Subflow Complete" level="INFO" doc:name="Logger"/>
+        <flow-ref name="visaRedirection" doc:name="Flow Reference"/>
+        <logger message="-----&gt; Method Triggered" level="INFO" doc:name="Logger"/>
+    </flow>
+    <sub-flow name="visaRedirection">
+        <logger message="Subflow started" level="INFO" doc:name="Logger"/>
+        <custom-transformer class="ie.boi.messageTransformer.Transformer" doc:name="URI-Processer"/>
+        <choice doc:name="Choice">
+            <when expression="payload!=empty">
+                <object-to-string-transformer doc:name="Object to String"/>
+                <json:object-to-json-transformer doc:name="Object to JSON"/>
+            </when>
+            <otherwise>
+                <logger message="PAYLOAD ===== EMPTY" level="INFO" doc:name="Logger"/>
+            </otherwise>
+        </choice>
+        <logger message="the uri is #[sessionVars['visaURI']]" level="INFO" doc:name="Logger"/>
+        <http:request config-ref="sandboxCall" path="#[sessionVars['visaURI']]" method="#[message.inboundProperties.'http.method']" doc:name="Visa Connection">
+            <http:request-builder>
+                <http:header headerName="Accept" value="application/json"/>
+                <http:header headerName="Content-length" value="#[message.inboundProperties.'content-length']"/>
+                <http:header headerName="Content-Type" value="application/json"/>
+            </http:request-builder>
+        </http:request>
+    </sub-flow>
+    <apikit:mapping-exception-strategy name="vtc-customer-rules-api-apiKitGlobalExceptionMapping">
+        <apikit:mapping statusCode="404">
+            <apikit:exception value="org.mule.module.apikit.exception.NotFoundException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Resource not found&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="405">
+            <apikit:exception value="org.mule.module.apikit.exception.MethodNotAllowedException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Method not allowed&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="415">
+            <apikit:exception value="org.mule.module.apikit.exception.UnsupportedMediaTypeException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Unsupported media type&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="406">
+            <apikit:exception value="org.mule.module.apikit.exception.NotAcceptableException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Not acceptable&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+        <apikit:mapping statusCode="400">
+            <apikit:exception value="org.mule.module.apikit.exception.BadRequestException" />
+            <set-property propertyName="Content-Type" value="application/json" doc:name="Property"/>
+            <set-payload value="{ &quot;message&quot;: &quot;Bad request&quot; }" doc:name="Set Payload"/>
+        </apikit:mapping>
+    </apikit:mapping-exception-strategy>
+</mule>

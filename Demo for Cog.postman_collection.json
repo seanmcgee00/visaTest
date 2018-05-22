@@ -1,0 +1,227 @@
+{
+	"id": "0f353e81-4587-431e-8b06-84c5e5bf1e0c",
+	"name": "Demo for Cog",
+	"description": null,
+	"auth": null,
+	"events": null,
+	"variables": null,
+	"order": [
+		"d8ff812c-8eb5-41b6-90c8-a668957c924f",
+		"0df85b47-cd1b-4118-9a47-f503699a3433",
+		"bea26167-2769-491b-b349-d58aae27d031",
+		"a8ee2b4b-8da0-463f-9647-6bd7a9d4c8b2",
+		"b09fc1b2-b3a0-495d-a695-93b32c2379b5"
+	],
+	"folders_order": [],
+	"folders": [],
+	"requests": [
+		{
+			"id": "0df85b47-cd1b-4118-9a47-f503699a3433",
+			"name": "Get customer on doc id",
+			"url": "http://127.0.0.1:8081/api/consumertransactioncontrols/ctc-vd-0d753d01-4651-4919-b1c0-05f4dc66385f/rules",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_id",
+					"value": "41b5822d9af44792ab8c1049958feeeb",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_secret",
+					"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"headers": "Accept: application/json\nclient_id: 41b5822d9af44792ab8c1049958feeeb\nclient_secret: 0FCcAB4E64Ef4A5CA40Dc620701f497C\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "a8ee2b4b-8da0-463f-9647-6bd7a9d4c8b2",
+			"name": "Post customer on doc id",
+			"url": "http://127.0.0.1:8081/api/consumertransactioncontrols/ctc-vd-0d753d01-4651-4919-b1c0-05f4dc66385f/rules",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_id",
+					"value": "41b5822d9af44792ab8c1049958feeeb",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_secret",
+					"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n  \"receivedTimestamp\": \"2017-03-21 05:01:52.004\",\r\n  \"processingTimeinMs\": 43,\r\n  \"resource\": {\r\n    \"documentID\": \"ctc-vd-857a8766-160b-498d-820f-bf4339949c1b\",\r\n    \"globalControls\": [\r\n      {\r\n        \"declineAllNonTokenizeTransactions\": false,\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek Verma\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"spendLimit\": {\r\n          \"type\": \"LMT_MONTH\",\r\n          \"currentPeriodSpend\": 14,\r\n          \"declineThreshold\": 50,\r\n          \"alertThreshold\": 10,\r\n          \"timeZoneID\": \"America/Denver\"\r\n        }\r\n      }\r\n    ],\r\n    \"transactionControls\": [\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_E_COMMERCE\"\r\n      },\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_ATM_WITHDRAW\"\r\n      },\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_AUTO_PAY\"\r\n      },\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_BRICK_AND_MORTAR\"\r\n      },\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_CROSS_BORDER\"\r\n      },\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_FUNDS_TRANSFER\"\r\n      },\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_CONTACTLESS\"\r\n      }\r\n    ],\r\n    \"lastUpdateTimeStamp\": \"2017-11-21 04:59:20\"\r\n  }\r\n}",
+			"headers": "Accept: application/json\nclient_id: 41b5822d9af44792ab8c1049958feeeb\nclient_secret: 0FCcAB4E64Ef4A5CA40Dc620701f497C\nContent-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "b09fc1b2-b3a0-495d-a695-93b32c2379b5",
+			"name": "delete customer on doc id",
+			"url": "http://127.0.0.1:8081/api/consumertransactioncontrols/ctc-vd-0d753d01-4651-4919-b1c0-05f4dc66385f/rules",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_id",
+					"value": "41b5822d9af44792ab8c1049958feeeb",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_secret",
+					"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n\"transactionControls\": [\r\n{\r\n\"controlType\": \"TCT_E_COMMERCE\",\r\n\"isControlEnabled\": true,\r\n\"shouldDeclineAll\": false,\r\n\"shouldAlertOnDecline\": false,\r\n\"declineThreshold\": 200,\r\n\"alertThreshold\": 10,\r\n\"userIdentifier\": \"Abhishek\",\r\n\"shouldTargetSpecificCard\": false\r\n}\r\n]\r\n}",
+			"headers": "Accept: application/json\nContent-Type: application/json\nclient_id: 41b5822d9af44792ab8c1049958feeeb\nclient_secret: 0FCcAB4E64Ef4A5CA40Dc620701f497C\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "bea26167-2769-491b-b349-d58aae27d031",
+			"name": "put customer on doc id",
+			"url": "http://127.0.0.1:8081/api/consumertransactioncontrols/ctc-vd-0d753d01-4651-4919-b1c0-05f4dc66385f/rules",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_id",
+					"value": "41b5822d9af44792ab8c1049958feeeb",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_secret",
+					"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json"
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n  \"receivedTimestamp\": \"2017-03-21 05:01:52.004\",\r\n  \"processingTimeinMs\": 43,\r\n  \"resource\": {\r\n    \"documentID\": \"ctc-vd-857a8766-160b-498d-820f-bf4339949c1b\",\r\n    \"globalControls\": [\r\n      {\r\n        \"declineAllNonTokenizeTransactions\": false,\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek Verma\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"spendLimit\": {\r\n          \"type\": \"LMT_MONTH\",\r\n          \"currentPeriodSpend\": 14,\r\n          \"declineThreshold\": 50,\r\n          \"alertThreshold\": 10,\r\n          \"timeZoneID\": \"America/Denver\"\r\n        }\r\n      }\r\n    ],\r\n    \"transactionControls\": [\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_E_COMMERCE\"\r\n      },\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_ATM_WITHDRAW\"\r\n      },\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_AUTO_PAY\"\r\n      },\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_BRICK_AND_MORTAR\"\r\n      },\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_CROSS_BORDER\"\r\n      },\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_FUNDS_TRANSFER\"\r\n      },\r\n      {\r\n        \"isControlEnabled\": true,\r\n        \"shouldDeclineAll\": false,\r\n        \"shouldAlertOnDecline\": false,\r\n        \"declineThreshold\": 100,\r\n        \"alertThreshold\": 10,\r\n        \"userIdentifier\": \"Abhishek\",\r\n        \"shouldTargetSpecificCard\": false,\r\n        \"controlType\": \"TCT_CONTACTLESS\"\r\n      }\r\n    ],\r\n    \"lastUpdateTimeStamp\": \"2017-11-21 04:59:20\"\r\n  }\r\n}",
+			"headers": "Accept: application/json\nclient_id: 41b5822d9af44792ab8c1049958feeeb\nclient_secret: 0FCcAB4E64Ef4A5CA40Dc620701f497C\nContent-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "d8ff812c-8eb5-41b6-90c8-a668957c924f",
+			"name": "Registration to Visa",
+			"url": "http://127.0.0.1:8081/api/consumertransactioncontrols",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Accept",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_id",
+					"value": "41b5822d9af44792ab8c1049958feeeb",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "client_secret",
+					"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": {
+				"type": "noauth"
+			},
+			"events": [],
+			"folder": null,
+			"rawModeData": "{\r\n\"primaryAccountNumber\": \"4514170000000001\"\r\n}",
+			"headers": "Accept: application/json\nContent-Type: application/json\nclient_id: 41b5822d9af44792ab8c1049958feeeb\nclient_secret: 0FCcAB4E64Ef4A5CA40Dc620701f497C\n",
+			"pathVariables": {}
+		}
+	]
+}

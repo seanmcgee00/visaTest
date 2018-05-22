@@ -1,0 +1,99 @@
+{
+  "receivedTimestamp": "2017-03-21 05:01:52.004",
+  "processingTimeinMs": 43,
+  "resource": {
+    "documentID": "ctc-vd-857a8766-160b-498d-820f-bf4339949c1b",
+    "globalControls": [
+    {
+      "declineAllNonTokenizeTransactions": false,
+      "isControlEnabled": true,
+      "shouldDeclineAll": false,
+      "shouldAlertOnDecline": false,
+      "declineThreshold": 100,
+      "alertThreshold": 10,
+      "userIdentifier": "Abhishek Verma",
+      "shouldTargetSpecificCard": false,
+      "spendLimit": {
+        "type": "LMT_MONTH",
+        "currentPeriodSpend": 14.0,
+        "declineThreshold": 50.0,
+        "alertThreshold": 10.0,
+        "timeZoneID": "America/Denver"
+      }
+    }
+    ],
+    "transactionControls": [
+    {
+      "isControlEnabled": true,
+      "shouldDeclineAll": false,
+      "shouldAlertOnDecline": false,
+      "declineThreshold": 100,
+      "alertThreshold": 10,
+      "userIdentifier": "Abhishek",
+      "shouldTargetSpecificCard": false,
+      "controlType": "TCT_E_COMMERCE"
+    },
+    {
+      "isControlEnabled": true,
+      "shouldDeclineAll": false,
+      "shouldAlertOnDecline": false,
+      "declineThreshold": 100,
+      "alertThreshold": 10,
+      "userIdentifier": "Abhishek",
+      "shouldTargetSpecificCard": false,
+      "controlType": "TCT_ATM_WITHDRAW"
+    },
+    {
+      "isControlEnabled": true,
+      "shouldDeclineAll": false,
+      "shouldAlertOnDecline": false,
+      "declineThreshold": 100,
+      "alertThreshold": 10,
+      "userIdentifier": "Abhishek",
+      "shouldTargetSpecificCard": false,
+      "controlType": "TCT_AUTO_PAY"
+    },
+    {
+      "isControlEnabled": true,
+      "shouldDeclineAll": false,
+      "shouldAlertOnDecline": false,
+      "declineThreshold": 100,
+      "alertThreshold": 10,
+      "userIdentifier": "Abhishek",
+      "shouldTargetSpecificCard": false,
+      "controlType": "TCT_BRICK_AND_MORTAR"
+    },
+    {
+      "isControlEnabled": true,
+      "shouldDeclineAll": false,
+      "shouldAlertOnDecline": false,
+      "declineThreshold": 100,
+      "alertThreshold": 10,
+      "userIdentifier": "Abhishek",
+      "shouldTargetSpecificCard": false,
+      "controlType": "TCT_CROSS_BORDER"
+    },
+    {
+      "isControlEnabled": true,
+      "shouldDeclineAll": false,
+      "shouldAlertOnDecline": false,
+      "declineThreshold": 100,
+      "alertThreshold": 10,
+      "userIdentifier": "Abhishek",
+      "shouldTargetSpecificCard": false,
+      "controlType": "TCT_FUNDS_TRANSFER"
+    },
+    {
+      "isControlEnabled": true,
+      "shouldDeclineAll": false,
+      "shouldAlertOnDecline": false,
+      "declineThreshold": 100,
+      "alertThreshold": 10,
+      "userIdentifier": "Abhishek",
+      "shouldTargetSpecificCard": false,
+      "controlType": "TCT_CONTACTLESS"
+    }
+    ],
+    "lastUpdateTimeStamp": "2017-11-21 04:59:20"
+  }
+}

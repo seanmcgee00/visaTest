@@ -1,0 +1,57 @@
+{
+"receivedTimestamp": "2017-03-21 04:50:20.098",
+"processingTimeinMs": 9,
+"resource": {
+"status": "ELIGIBLE",
+"availableMerchantTypeRules": [
+{
+"name": "MCT_ADULT_ENTERTAINMENT"
+},
+{
+"name": "MCT_AIRFARE"
+},
+{
+"name": "MCT_ALCOHOL"
+},
+{
+"name": "MCT_APPAREL_AND_ACCESSORIES"
+},
+{
+"name": "MCT_AUTOMOTIVE"
+},
+{
+"name": "MCT_CAR_RENTAL"
+},
+{
+"name": "MCT_ELECTRONICS"
+},
+{
+"name": "MCT_ENTERTAINMENT_AND_SPORTINGEVENTS"
+},
+{
+"name": "MCT_GAMBLING"
+},
+{
+"name": "MCT_GAS_AND_PETROLEUM"
+},
+{
+"name": "MCT_GROCERY"
+},
+{
+"name": "MCT_HOTEL_AND_LODGING"
+},
+{
+"name": "MCT_HOUSEHOLD"
+},
+{
+"name": "MCT_PERSONAL_CARE"
+},
+{
+"name": "MCT_RECREATION"
+},
+{
+"name": "MCT_SMOKE_AND_TOBACCO"
+}
+]
+}
+}

@@ -1,0 +1,12 @@
+{
+"receivedTimestamp": "2017-03-21 04:35:29.332",
+"processingTimeinMs": 81,
+"resource": {
+  "status": "CONFIGURED",
+  "callBackSettings": {
+    "isCallBackDisabled": true,
+    "callBackEndpoint": "https://localhost:8080/sampleVCTChostprocessor/consumertransactioncontrols/endpoint",
+    "iscallBackEndpointLocal": true
+    }
+  }
+}

@@ -1,0 +1,20 @@
+#%RAML 1.0 DataType
+type: array
+items:
+  type: object
+  properties:
+    documentID:
+      type: !include documentIDType.raml
+      required: false
+    primaryAccountNumber:
+      type: !include primaryAccountNumberType.raml
+      required: false
+    status:
+      type: !include accountInquiryByListStatusType.raml
+      required: false
+    controlDocuments:
+      required: false
+      type: !include controlDocumentsType.raml
+    allAvailableControls:
+      required: false
+      type: !include allAvailableControlsType.raml

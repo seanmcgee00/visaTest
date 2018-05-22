@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+
+displayName: filterByCountry
+description: 'If provided, the scope of the control will be governed by the object value.'
+type: object
+properties:
+  controlDisabledCountryList:
+    required: false
+    type: !include controlDisabledCountryList.raml
+  controlEnabledCountryList:
+    required: false
+    type: !include controlEnabledCountryList.raml

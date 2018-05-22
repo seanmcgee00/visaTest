@@ -1,0 +1,981 @@
+#%RAML 1.0
+title: VTC Customer Rules API
+description: The Customer Rules API enables consumers to establish control rules that will define the type of transactions they want to Manage.
+version: 1.0.0
+mediaType: application/json
+protocols:
+  - HTTPS
+baseUri: https://mocksvc.eu1.anypoint.mulesoft.com/mocks/dcbec7df-5c53-4038-9b15-af494c1bb320 # baseUri: https://sandbox.api.visa.com
+
+traits:
+  client-id-required:
+    headers:
+      client_id:
+        type: string
+      client_secret:
+        type: string
+
+types:
+  resource:
+    type: !include types/resource.raml 
+  resource_main:
+    type: !include types/resource_main.raml  
+  processingTimeinMs:
+    type: !include types/baseTypes/processingTimeinMs.raml
+  receivedTimestamp:
+    type: !include types/baseTypes/receivedTimestamp.raml  
+  currentAccountID:
+    type: !include types/baseTypes/currentAccountID.raml 
+  newAccountID:
+    type: !include types/baseTypes/newAccountID.raml
+  collectionResourceCallback:
+    type: !include types/collectionResourceOfAppConfigurationCallbackSettingsResponseType.raml
+  callbackSettingsRequest:
+    type: !include types/callbackSettingsRequestType.raml
+  collectionResource:
+    type: !include types/collectionResourceOfTransactionControlDocumentType.raml  
+  globalControls:
+    type: !include types/globalControlsType.raml
+  merchantControls:
+    type: !include types/merchantControlsType.raml
+  transactionControls:
+    type: !include types/transactionControlsType.raml
+  
+/consumertransactioncontrols:
+  post:
+    is: [client-id-required]
+    description: Enroll a card for transaction control
+    displayName: CreatePaymentSubmission
+    responses:
+      200:
+        description: 
+        body:
+          application/json:
+            type: object
+            example: !include examples/registration_response.json
+      400:
+        description: Bad Request
+      401:
+        description: Unauthorized
+      403:
+        description: Forbidden Access
+      405:
+        description: Method Not Allowed
+      406:
+        description: Not Acceptable
+      429:
+        description: Too Many Requests
+      500:
+        description: Internal Server Error
+    headers:
+          Accept:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+          Content-Type:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+    body:
+      application/json:
+        description: Allows Submission of a payment
+        type: object
+        properties:
+          bankAccountNumber:
+            description: The bankAccountNumber number for which the control is to be established.
+            type: string
+            minLength: 1
+            maxLength: 128
+            example: Issuer's Bank Account Number
+            required: false
+          paymentToken:
+            description: The paymentToken number for which the control is to be established.
+            type: string
+            minLength: 16
+            maxLength: 19
+            required: false
+          primaryAccountNumber:
+            description: The card number for which the control is to be established.
+            type: string
+            minLength: 16
+            maxLength: 19
+            required: false
+          alertsEnrollmentDetails:
+            description: If issuer is Enrolled in VISA Last Mile Alerts Delivery then same API will optionally allow to Create Alerts Profile with default alerts preferences. In line registration will generate 2 unique ID from Visa Systems. One as documentID VTC control management and other is customerID which card holder can later use to manage the individual Alerts preference using Alerts Preferences Management API.
+            type: object
+            required: false
+            properties:
+              countryCode:
+                  description: Three letter ISO ALPHA-3 Code.
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  required: true
+              firstName:
+                  description: First name of the Customer, Maximum of 25 characters
+                  type: string
+                  minLength: 1
+                  maxLength: 25
+                  required: true
+              lastName:
+                  description: Last name of the Customer, Maximum of 25 characters
+                  type: string
+                  minLength: 1
+                  maxLength: 25
+                  required: true
+              preferredLanguage:
+                  description: Language codes supported are en-us (English US) and es-us (Spanish US).
+                  type: string
+                  example: en-us
+                  default: en-us
+                  minLength: 1
+                  maxLength: 5
+                  required: true
+              userID:
+                  description: The value provided by the user to uniquely identify the Customer, Maximum of 72 characters
+                  type: string
+                  minLength: 3
+                  maxLength: 3
+                  required: true
+              defaultAlertsPreferences:
+                  description: The list of contact preferences that can be used as defaults.
+                  type: object
+                  required: true
+                  properties:
+                    contactType:
+                      description: Contact Type is Alert Delivery Channel Selected by Card Holder. Supported Delivery Channels are SMS, Push, Email. (In Current Sandbox environment Only Email delivery channel is supported.)
+                      type: string
+                      required: true
+                    contactValue:
+                      description: Actual Contact details provided by the user for the this contactType, Maximum of 50 characters.
+                      type: string
+                      required: true  
+                      minLength: 1
+                      maxLength: 50   
+
+  /{documentID}:
+    delete:
+      is: [client-id-required]
+      displayName: DeleteByDocID
+      responses:
+        '200':
+          body:
+            application/json:
+              description: CollectionResourceOfVoid
+              example: !include examples/deleteBydocumentID_response.json
+              type: object
+              properties:
+                processingTimeinMs:
+                  required: true
+                  type: processingTimeinMs
+                receivedTimestamp:
+                  required: true
+                  type: receivedTimestamp
+        '400':
+          description: |
+            Bad Request
+        '401':
+          description: |
+            Unauthorized
+        '500':
+          description: |
+            Internal Server Error
+        '503':
+          description: |
+            Service Unavilable
+      headers:
+        Accept:
+          pattern: application/json
+          example: application/json
+          description: Accept
+          default: application/json
+          type: string
+
+    /rules:
+      get:
+        is: [client-id-required]
+        displayName: RetrieveTransactionControlDocument
+        description: Retrieve the Transaction Control Document
+        responses: 
+          200:
+            description: Success
+            body: 
+              application/json:
+                description: Vaild
+                required: false
+                type: collectionResource
+                example: !include examples/collectionResourceExample.json
+
+      post:
+        is: [client-id-required]
+        displayName: CreateNewControlForControlDocument
+        description: Create a new control(s) within the Transaction Control Document
+        responses: 
+          200:
+            description: Success
+            body:
+              application/json:
+                required: false
+                description: Vaild
+                type: collectionResource
+                example: !include examples/collectionResourceExample.json
+                        
+        body:
+          application/json:
+            description: request
+            required: true
+            properties: 
+              globalControls:
+                required: false
+                type: globalControls
+              merchantControls:
+                required: false
+                type: merchantControls
+              transactionControls:
+                required: false
+                type: transactionControls
+        headers:
+          Accept:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+            example: application/json
+
+      put:
+        is: [client-id-required]
+        displayName: UpdateExistingControlForControlDocument
+        description: Update the existing control(s) within the Transaction Control Document
+        responses: 
+          200:
+            description: Success
+            body: 
+              application/json:
+                description: Vaild
+                required: false
+                type: collectionResource
+                example: !include examples/collectionResourceExample.json
+
+        body:
+          application/json:
+            description: request
+            required: true
+            properties: 
+              globalControls:
+                required: false
+                type: globalControls
+              merchantControls:
+                required: false
+                type: merchantControls
+              transactionControls:
+                required: false
+                type: transactionControls
+        headers:
+          Accept:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+            example: application/json
+
+      delete:
+        is: [client-id-required]
+        displayName: DeleteControlRulesForControlDocument
+        description: Delete existing Control rules within the Transaction Control Document
+        responses: 
+          200:
+            description: Success
+            body: 
+              application/json:
+                description: Vaild
+                required: false
+                type: collectionResource
+                example: !include examples/collectionResourceExample.json
+
+        body:
+          application/json:
+            description: request
+            required: true
+            properties: 
+              globalControls:
+                required: false
+                type: globalControls
+              merchantControls:
+                required: false
+                type: merchantControls
+              transactionControls:
+                required: false
+                type: transactionControls
+        headers:
+          Accept:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+            example: application/json
+
+    /controlHistory:
+      get:
+        is: [client-id-required]
+        displayName: ListTransactionControlDocumentChangesByDocumentID
+        description: Retrieve a History of Control Document Changes By documentID
+        responses:
+          '200':
+            description: 
+            body:
+              application/json:
+                required: false 
+                example: !include examples/getTransactionControlChangesExample.json
+                properties:
+                  processingTimeinMs:
+                    required: true
+                    type: processingTimeinMs
+                  receivedTimestamp:
+                    required: true
+                    type: receivedTimestamp
+                  resource:
+                    required: true
+                    type: !include types/changeHistroyResourceType.raml
+
+                    
+          '400':
+            description: Bad Request
+          '401':
+            description: Unauthorized
+          '403':
+            description: Forbidden Access
+          '405':
+            description: Method Not Allowed
+          '406':
+            description: Not Acceptable
+          '429':
+            description: Too Many Requests
+          '500':
+            description: Internal Server Error
+
+            
+  /batch:
+    post:
+      is: [client-id-required]
+      displayName: BatchEnrollment
+      responses:
+        200:
+          description: Request Response
+          body:
+            application/json:
+              required: false 
+              description: CollectionResourceOfBulkEnrollmentResponse
+              example: !include examples/batch_response.json
+              properties:
+                processingTimeinMs:
+                  required: true
+                  type: processingTimeinMs
+                receivedTimestamp:
+                  required: true
+                  type: receivedTimestamp
+                resource:
+                  required: true
+                  type: resource
+        400:
+          description: Bad Request
+        403:
+          description: Forbidden
+        422:
+          description: Un-processable Entity
+        500:
+          description: Internal Server Error
+        503:
+          description: Service Unavailable
+
+      headers:
+          Accept:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+          Content-Type:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+          
+      body:
+        application/json:
+          description: Request
+          required: true
+          properties:
+            cardsType:
+              required: false
+              type: string
+              example: PAN
+              description: 'This represents whether the list of accountIdentifier is PAN, BAN or TOKEN.'
+            forceEnrollment:
+              required: false
+              type: boolean
+              example: true
+              description: 'If the indicator is set to true, previously enrolled accountIdentifier will be overwritten.'
+            controlRules:
+              required: true
+              description: The type of controls required to enroll the list of cards with in VTC.
+              properties:
+                globalControl:
+                  required: false
+                  type: !include types/batchEnrollmentGlobalControls.raml
+                merchantControls:
+                  required: false
+                  type: merchantControls
+                transactionControls:
+                  required: false
+                  type: transactionControls
+            enrolledCards:
+              required: true
+              type: !include types/enrolledCardsType.raml
+
+  /accounts:
+    /accountupdate:
+      post:
+        is: [client-id-required]
+        displayName: CardReplacementUpdate
+        description: Update the existing account identifier with new one (Card Replacement)
+        responses:
+          '200':
+            description: CollectionResourceOfAccountUpdateResponse OK
+            body:
+              application/json:
+                description: CollectionResourceOfAccountUpdateResponse OK
+                example: !include examples/accountUpdate_update_response.json
+                type: object
+                properties:
+                  processingTimeinMs:
+                    required: true
+                    type: processingTimeinMs
+                  receivedTimestamp:
+                    required: true
+                    type: receivedTimestamp
+                  resource:
+                    required: true
+                    type: resource_main
+                    
+          '400':
+            description: Bad Request
+          '401':
+            description: Unauthorized
+          '500':
+            description: Internal Server Error
+          '503':
+            description: Service Unavailable
+        headers:
+          Accept:
+            pattern: application/json
+            example: application/json
+            description: Accept
+            default: application/json
+            type: string
+        body:
+          application/json:
+            description: Request
+            type: object
+            properties:
+              currentAccountID:
+                type: string
+                minLength: 16
+                maxLength: 19
+                example: '4514170000000001'
+                description: The current account id must be between 16 and 19
+              newAccountID:
+                type: string
+                minLength: 16
+                maxLength: 19
+                example: '4514170000000002'
+                description: The updated account id must be between 16 and 19
+      delete:
+        is: [client-id-required]
+        displayName: CardReplacementDelete
+        description: Delete Transaction Control By an Account identifier
+        responses:
+          '200':
+            description: Request Response
+            body:
+              application/json:
+                description: Collection Resource Of Account-Update Response
+                example: !include examples/accountUpdate_delete_response.json
+                type: object
+                properties:
+                  processingTimeinMs:
+                    required: true
+                    type: processingTimeinMs
+                  receivedTimestamp:
+                    required: true
+                    type: receivedTimestamp
+                  resource:
+                    required: true
+                    type: resource_main
+          '400':
+            description: Bad Request
+          '401':
+            description: Unauthorized
+          '403':
+            description: Forbidden
+          '500':
+            description: Internal Server Error
+        headers:
+          Accept:
+            pattern: application/json
+            example: application/json
+            description: Accept
+            default: application/json
+            type: string
+        body:
+          application/json:
+            description: Request
+            type: object
+            properties:
+              primaryAccountNumber:
+                required: true
+                type: string
+                minLength: 16
+                maxLength: 19
+                example: '4514170000000001'
+                description: The primary account id must be between 16 and 19
+
+  /inquiries:
+    /cardinquiry:
+      post:
+        is: [client-id-required]
+        displayName: ListOfTransactionControlDocumentsByPrimaryAccountNumber
+        description: Retrieve a list of Transaction Control Documents for a PrimaryAccountNumber
+        responses:
+          '200':
+            description: 
+            body:
+              application/json:
+                example: !include examples/transactionControlDocumentsByPrimaryAccountNumberExample.json
+                properties: 
+                  processingTimeinMs:
+                    required: true
+                    type: processingTimeinMs
+                  receivedTimestamp:
+                    required: true
+                    type: receivedTimestamp
+                  resource:
+                    required: true
+                    type: !include types/transactionControlListResponesResourceType.raml
+                    
+          '400':
+            description: Bad Request
+          '401':
+            description: Unauthorized
+          '403':
+            description: Forbidden Access
+          '405':
+            description: Method Not Allowed
+          '406':
+            description: Not Acceptable
+          '429':
+            description: Too Many Requests
+          '500':
+            description: Internal Server Error
+
+        headers:
+          Accept:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+          Content-Type:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+        body:
+          application/json:
+            description: Allows Submission of a payment
+            type: object
+            properties:
+              primaryAccountNumber:
+                required: true
+                type: string
+                minLength: 16
+                maxLength: 19
+                example: '4514170000000001'
+                description: The primary account id must be between 16 and 19
+
+  /walletservices:
+    /accountinquiry:
+      post:
+        is: [client-id-required]
+        displayName: AccountInquiryByListOfDocumentIDOrPrimaryAccountNumber
+        description: Retrieve a list of all CTC Rules configured as well as all available controls for the every primary AccountNumber/documentID.
+        responses:
+          '200':
+            description: 
+            body:
+              application/json:
+                type: object
+                example: !include examples/accountInquiryByListExample.json
+                properties:
+                  processingTimeinMs:
+                    required: true
+                    type: processingTimeinMs
+                  receivedTimestamp:
+                    required: true
+                    type: receivedTimestamp
+                  resource:
+                    required: true
+                    type: !include types/accountInquiryByListResourceType.raml
+                    
+          '400':
+            description: Bad Request
+          '401':
+            description: Unauthorized
+          '403':
+            description: Forbidden Access
+          '405':
+            description: Method Not Allowed
+          '406':
+            description: Not Acceptable
+          '429':
+            description: Too Many Requests
+          '500':
+            description: Internal Server Error
+
+        headers:
+          Accept:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+          Content-Type:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+        body:
+          application/json:
+            description: Allows Submission of a payment
+            required: true
+            properties:
+              documentIDs:
+                required: false
+                description: List of transaction control document-ID's for those available and Configured rules configured are required. Max number of unique document-ID supported are 25.
+                type: array
+                maxItems: 25
+              primaryAccountNumbers:
+                required: false
+                description: List of primary Account Numbers for those available and Configured rules configured are required.Max number of unique cards supported are 25.
+                type: array
+                maxItems: 25
+
+  /controlHistory:
+    post:
+      is: [client-id-required]
+      displayName: ChangeHistroyOfAConsumerTransactionControlDocumentsByPrimaryAccountNumber
+      description: Retrieve a History of Changes made by card holder to the Transaction Control Documents Since it was crated in Chronological Order. Every Control Snapshot represent the current state of document after updates. A single PrimaryAccountNumber can have muiltiple control documented mapped in CTC
+      responses:
+          '200':
+            description: 
+            body:
+              application/json:
+                required: false 
+                example: !include examples/changeHistroyOfAConsumerTransactionControlDocumentsExample.json
+                properties:
+                  processingTimeinMs:
+                    required: true
+                    type: processingTimeinMs
+                  receivedTimestamp:
+                    required: true
+                    type: receivedTimestamp
+                  resource:
+                    required: true
+                    type: !include types/changeHistroyResourceType.raml
+
+                    
+          '400':
+            description: Bad Request
+          '401':
+            description: Unauthorized
+          '403':
+            description: Forbidden Access
+          '405':
+            description: Method Not Allowed
+          '406':
+            description: Not Acceptable
+          '429':
+            description: Too Many Requests
+          '500':
+            description: Internal Server Error
+
+      headers:
+        Accept:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+        Content-Type:
+            description: Header containing mediaType accepted 'application/json'
+            type: string
+            default: application/json
+      body:
+        application/json:
+          description: Request
+          required: true
+          type: object
+          properties:
+            endDate:
+              required: false
+              type: !include types/baseTypes/endDateType.raml
+            primaryAccountNumber:
+              required: true
+              description: Get Transaction Control Document List by a PrimaryAccountNumber
+              type: string
+              minLength: 16
+              maxLength: 25
+              example: "4514170000000001"
+            startDate:
+              required: false
+              type: !include types/baseTypes/startDateType.raml
+
+/applications:
+  /configuration:
+    get:
+      is: [client-id-required]
+      displayName: ConfigurationDataOfNotificationCallback
+      description: Retrieve the App's configuration data for notification callback settings
+      responses: 
+        200:
+          description: Success
+          body: 
+            application/json:
+              description: Vaild
+              required: false
+              type: collectionResourceCallback
+              example: !include examples/callbackExample.json
+
+    put:
+      is: [client-id-required]
+      displayName: UpdateConfigurationDataOfNotificationCallback
+      description: Update the App's configuration data for notification callback settings
+      responses: 
+        200:
+          description: Success
+          body:
+            application/json:
+              description: Vaild
+              type: collectionResourceCallback
+              example: !include examples/callbackExample.json
+              
+      body:
+        application/json:
+          required: true
+          description: Vaild
+          type: callbackSettingsRequest
+
+      headers:
+        Accept:
+          description: Header containing mediaType accepted 'application/json'
+          type: string
+          default: application/json
+          example: application/json
+
+/configuration:
+  /cardinquiry:
+    post:
+      is: [client-id-required]
+      displayName: RetrieveRuleCategories
+      description: Retrieve a list of Rule categories Allowed to be configured for a Primary Account Number
+      responses:
+        '200':
+          description: Request Response
+          body:
+            application/json:
+              description: Collection Resource Of Sponsor Config Rule Category Of Card Enquiry RuleC ategory Response
+              example: !include examples/availablePaymentControlTypes_response.json
+              type: object
+              properties:
+                processingTimeinMs:
+                  required: true
+                  type: processingTimeinMs
+                receivedTimestamp:
+                  required: true
+                  type: receivedTimestamp
+                resource:
+                  required: true
+                  type: object
+                  properties: 
+                    status:
+                      type: string
+                      required: true
+                      description: 'status for this category or rule type'
+                      enum: [ELIGIBLE, NOT_ELIGIBLE]
+                      example: ELIGIBLE
+                    availableControlTypes:
+                      required: true
+                      description: Rule categories available for this card.
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            required: true
+                            type: string
+                            enum: [PCT_GLOBAL ,PCT_TRANSACTION , PCT_MERCHANT]
+                            description: Name of rule category              
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal Server Error
+      headers:
+        Accept:
+          pattern: application/json
+          example: application/json
+          description: Accept
+          default: application/json
+          type: string
+      body:
+        application/json:
+          description: Request
+          type: object
+          properties:
+            primaryAccountNumber:
+              required: true
+              type: string
+              minLength: 16
+              maxLength: 19
+              example: '4514170000000001'
+              description: The primary account id must be between 16 and 19
+
+/merchanttypecontrols:
+  /cardinquiry:
+    post:
+      is: [client-id-required]
+      displayName:  RetrieveMerchantControls
+      description: Retrieve a list of Merchant Controls Allowed to be configured for a Primary Account Number
+      responses:
+        '200':
+          description: Request Response
+          body:
+            application/json:
+              description: Collection Resource Of Account-Update Response
+              example: !include examples/availableMerchantTypeControls_response.json
+              type: object
+              properties:
+                processingTimeinMs:
+                  required: true
+                  type: processingTimeinMs
+                receivedTimestamp:
+                  required: true
+                  type: receivedTimestamp
+                resource:
+                  required: true
+                  type: object
+                  properties: 
+                    status:
+                      type: string
+                      required: true
+                      description: 'status for this category or rule type'
+                      enum: [ELIGIBLE, NOT_ELIGIBLE]
+                      example: ELIGIBLE
+                    availableMerchantTypeRules:
+                      required: true
+                      description: Rule categories available for this card.
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            required: true
+                            type: string
+                            enum: [MCT_ADULT_ENTERTAINMENT, MCT_AIRFARE, MCT_ALCOHOL, MCT_APPAREL_AND_ACCESSORIES, MCT_AUTOMOTIVE, MCT_CAR_RENTAL, MCT_ELECTRONICS, MCT_ENTERTAINMENT_AND_SPORTINGEVENTS, MCT_GAMBLING, MCT_GAS_AND_PETROLEUM, MCT_GROCERY, MCT_HOTEL_AND_LODGING, MCT_HOUSEHOLD, MCT_PERSONAL_CARE, MCT_RECREATION, MCT_SMOKE_AND_TOBACCO]
+                            description: Name of rule category              
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '500':
+          description: Internal Server Error
+      headers:
+        Accept:
+          pattern: application/json
+          example: application/json
+          description: Accept
+          default: application/json
+          type: string
+      body:
+        application/json:
+          description: Request
+          type: object
+          properties:
+            primaryAccountNumber:
+              required: true
+              type: string
+              minLength: 16
+              maxLength: 19
+              example: '4514170000000001'
+              description: The primary account id must be between 16 and 19
+
+/transactiontypecontrols:
+  /cardinquiry:
+    post:
+      is: [client-id-required]
+      displayName: RetrieveTransactionControls
+      description: Retrieve a list of Transaction Controls Allowed to be configured for a Primary Account Number
+      responses:
+        200:
+          description: Request Response
+          body:
+            application/json:
+              description: Collection Resource Of Account-Update Response
+              example: !include examples/availableTransactionTypeControls.json
+              type: object
+              properties:
+                processingTimeinMs:
+                  required: true
+                  type: processingTimeinMs
+                receivedTimestamp:
+                  required: true
+                  type: receivedTimestamp
+                resource:
+                  required: true
+                  type: object
+                  properties: 
+                    status:
+                      type: string
+                      required: true
+                      description: 'status for this category or rule type'
+                      enum: [ELIGIBLE, NOT_ELIGIBLE]
+                      example: ELIGIBLE
+                    availableTransactionTypeRules:
+                      required: true
+                      description: Rule categories available for this card.
+                      type: array
+                      items:
+                        type: object
+                        properties:
+                          name:
+                            required: true
+                            type: string
+                            enum: [TCT_ATM_WITHDRAW ,TCT_AUTO_PAY, TCT_BRICK_AND_MORTAR, TCT_CROSS_BORDER, TCT_E_COMMERCE, TCT_FUNDS_TRANSFER, TCT_CONTACTLESS]
+                            description: Name of rule category              
+        400:
+          description: Bad Request
+        401:
+          description: Unauthorized
+        403:
+          description: Forbidden
+        500:
+          description: Internal Server Error
+      headers:
+        Accept:
+          pattern: application/json
+          example: application/json
+          description: Accept
+          default: application/json
+          type: string
+      body:
+        application/json:
+          description: Request
+          type: object
+          properties:
+            primaryAccountNumber:
+              required: true
+              type: string
+              minLength: 16
+              maxLength: 19
+              example: '4514170000000001'
+              description: The primary account id must be between 16 and 19    

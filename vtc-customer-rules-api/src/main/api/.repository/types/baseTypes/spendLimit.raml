@@ -1,0 +1,24 @@
+#%RAML 1.0 DataType
+
+displayName: spendLimit
+description: 'When this Object is provided, the control will keep track of all spending that triggers this control by accumalating cardholderBillAmount in the currentPeriodSpend aggregate value. The duration of the spending period is defined by the “type” value and can be daily, weekly or monthly. If a triggering transaction to be validated exceeds the spendLimit declineThreshold when added to the currentPeriodSpend, the transaction will be declined. When a triggering transaction to be validate exceeds the alertThreshold when added to the currentPeriodSpend, then an alert should be generated. The currentPeriodSpend is reset when the first triggering transaction arrives that is after the currentPeriodEndTime. When the control resets, the timeZoneID is used to compute the next currentPeriodEndTime using the type value and the last currentPeriodEndTime. The currentPeriodEndTime in GMT.'
+type: object
+properties:
+  alertThreshold:
+    required: false
+    type: !include alertThreshold.raml
+  currentPeriodSpend:
+    required: true
+    type: !include currentPeriodSpend.raml
+  declineThreshold:
+    required: true
+    type: !include declineThreshold.raml
+  timeZoneID:
+    required: true
+    type: !include timeZoneID.raml
+  type:
+    required: true
+    type: !include type.raml
+  currentPeriodEnd:
+    required: false
+    type: string

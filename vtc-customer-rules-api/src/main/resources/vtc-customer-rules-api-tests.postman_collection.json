@@ -1,0 +1,720 @@
+{
+	"info": {
+		"_postman_id": "90adb298-3289-4e0e-9f19-80dda205ea7f",
+		"name": "vtc-customer-rules-api-tests",
+		"description": "Testing the visa api's",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CR-Registration",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"primaryAccountNumber\": \"4514170000000001\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols"
+					]
+				},
+				"description": "Registration :POST"
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Manage Controls by Document ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols/ctc-vd-857a8766-160b-498d-820f-bf4339949c1b/rules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols",
+						"ctc-vd-857a8766-160b-498d-820f-bf4339949c1b",
+						"rules"
+					]
+				},
+				"description": "Manage Controls by Document ID :GET"
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Manage Controls by Document ID",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"transactionControls\": [\n{\n\"controlType\": \"TCT_E_COMMERCE\",\n\"isControlEnabled\": true,\n\"shouldDeclineAll\": false,\n\"shouldAlertOnDecline\": false,\n\"declineThreshold\": 100,\n\"alertThreshold\": 10,\n\"userIdentifier\": \"Abhishek\",\n\"shouldTargetSpecificCard\": false\n}\n]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols/ctc-vd-857a8766-160b-498d-820f-bf4339949c1b/rules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols",
+						"ctc-vd-857a8766-160b-498d-820f-bf4339949c1b",
+						"rules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Manage Controls by Document ID",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"transactionControls\": [\n{\n\"controlType\": \"TCT_E_COMMERCE\",\n\"isControlEnabled\": true,\n\"shouldDeclineAll\": false,\n\"shouldAlertOnDecline\": false,\n\"declineThreshold\": 200,\n\"alertThreshold\": 10,\n\"userIdentifier\": \"Jim\",\n\"shouldTargetSpecificCard\": false\n},\n{\n\"controlType\": \"TCT_ATM_WITHDRAW\",\n\"isControlEnabled\": true,\n\"shouldDeclineAll\": false,\n\"shouldAlertOnDecline\": false,\n\"declineThreshold\": 200,\n\"alertThreshold\": 10,\n\"userIdentifier\": \"Jim\",\n\"shouldTargetSpecificCard\": false\n},\n{\n\"controlType\": \"TCT_AUTO_PAY\",\n\"isControlEnabled\": true,\n\"shouldDeclineAll\": false,\n\"shouldAlertOnDecline\": false,\n\"declineThreshold\": 200,\n\"alertThreshold\": 10,\n\"userIdentifier\": \"Jim\",\n\"shouldTargetSpecificCard\": false\n},\n{\n\"controlType\": \"TCT_BRICK_AND_MORTAR\",\n\"isControlEnabled\": true,\n\"shouldDeclineAll\": false,\n\"shouldAlertOnDecline\": false,\n\"declineThreshold\": 200,\n\"alertThreshold\": 10,\n\"userIdentifier\": \"Jim\",\n\"shouldTargetSpecificCard\": false\n},\n{\n\"controlType\": \"TCT_CROSS_BORDER\",\n\"isControlEnabled\": true,\n\"shouldDeclineAll\": false,\n\"shouldAlertOnDecline\": false,\n\"declineThreshold\": 200,\n\"alertThreshold\": 10,\n\"userIdentifier\": \"Jim\",\n\"shouldTargetSpecificCard\": false\n},\n{\n\"controlType\": \"TCT_FUNDS_TRANSFER\",\n\"isControlEnabled\": true,\n\"shouldDeclineAll\": false,\n\"shouldAlertOnDecline\": false,\n\"declineThreshold\": 200,\n\"alertThreshold\": 10,\n\"userIdentifier\": \"Jim\",\n\"shouldTargetSpecificCard\": false\n},\n{\n\"controlType\": \"TCT_CONTACTLESS\",\n\"isControlEnabled\": true,\n\"shouldDeclineAll\": false,\n\"shouldAlertOnDecline\": false,\n\"declineThreshold\": 200,\n\"alertThreshold\": 10,\n\"userIdentifier\": \"Jim\",\n\"shouldTargetSpecificCard\": false\n}\n]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols/ctc-vd-857a8766-160b-498d-820f-bf4339949c1b/rules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols",
+						"ctc-vd-857a8766-160b-498d-820f-bf4339949c1b",
+						"rules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Manage Controls by Document ID",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"transactionControls\": [\n{\n\"controlType\": \"TCT_E_COMMERCE\",\n\"isControlEnabled\": true,\n\"shouldDeclineAll\": false,\n\"shouldAlertOnDecline\": false,\n\"declineThreshold\": 200,\n\"alertThreshold\": 10,\n\"userIdentifier\": \"Abhishek\",\n\"shouldTargetSpecificCard\": false\n}\n]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols/ctc-vd-857a8766-160b-498d-820f-bf4339949c1b/rules",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols",
+						"ctc-vd-857a8766-160b-498d-820f-bf4339949c1b",
+						"rules"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Delete Control Document by documentID",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols/ctc-vd-857a8766-160b-498d-820f-bf4339949c1b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols",
+						"ctc-vd-857a8766-160b-498d-820f-bf4339949c1b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Card Replacement",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"currentAccountID\": \"4514170000000001\",\n\"newAccountID\": \"4514170000000002\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols/accounts/accountupdate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols",
+						"accounts",
+						"accountupdate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Card Replacement",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"primaryAccountNumber\": \"4514170000000002\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols/accounts/accountupdate",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols",
+						"accounts",
+						"accountupdate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Account Inquiry by List of documentID or primaryAccountNumber",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"documentIDs\": [\n\"ctc-ip-98b195ed-138f-49a5-bc4e-cdc986e79960\",\n\"ctc-ip-98b195ed-138f-49a5-bc4e-cdc986e79960\"\n],\n\"primaryAccountNumbers\": [\n\"22222210000000000\"\n]\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols/walletservices/accountinquiry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols",
+						"walletservices",
+						"accountinquiry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Change Histroy of a Consumer Transaction Control Documents By PrimaryAccountNumber",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"primaryAccountNumber\": \"4514170000000001\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols/controlHistory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols",
+						"controlHistory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-List Transaction Control Document Changes By documentID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols/ctc-vd-871b3f95-9569-4087-a85a-d064466c711f/controlHistory",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols",
+						"ctc-vd-871b3f95-9569-4087-a85a-d064466c711f",
+						"controlHistory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Rule Categories Allowed by PrimaryAccountNumber",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"primaryAccountNumber\": \"4514170000000001\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/configuration/cardinquiry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"configuration",
+						"cardinquiry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Merchant Controls Allowed by PrimaryAccountNumber",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"primaryAccountNumber\": \"4514170000000001\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/merchanttypecontrols/cardinquiry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"merchanttypecontrols",
+						"cardinquiry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Transaction Controls Allowed by PrimaryAccountNumber",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"primaryAccountNumber\": \"4514170000000001\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/transactiontypecontrols/cardinquiry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"transactiontypecontrols",
+						"cardinquiry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Application Callback Configuration",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8081/api/applications/configuration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"applications",
+						"configuration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Application Callback Configuration",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"callBackSettings\": {\n\"callBackEndpoint\": \"https://localhost:8080/sampleVCTChostprocessor/consumertransactioncontrols/endpoint\",\n\"isCallBackDisabled\": true,\n\"iscallBackEndpointLocal\": true\n}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/applications/configuration",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"applications",
+						"configuration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-List of Transaction Control Documents By PrimaryAccountNumber",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"primaryAccountNumber\": \"4514170000000001\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols/inquiries/cardinquiry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols",
+						"inquiries",
+						"cardinquiry"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CR-Batch Enrollment",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "client_id",
+						"value": "41b5822d9af44792ab8c1049958feeeb"
+					},
+					{
+						"key": "client_secret",
+						"value": "0FCcAB4E64Ef4A5CA40Dc620701f497C"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\"cardsType\": \"PAN\",\n\"enrolledCards\": [\n{\n\"accountIdentifier\": \"4321000001001000001\",\n\"userIdentifier\": \"abc@visa.com\"\n},\n{\n\"accountIdentifier\": \"4321000001001000002\"\n}\n],\n\"controlRules\": {\n\"globalControl\": {\n\"alertThreshold\": 10,\n\"declineThreshold\": 100,\n\"isControlEnabled\": true,\n\"shouldAlertOnDecline\": true,\n\"shouldDeclineAll\": false\n},\n\"transactionControls\": [\n{\n\"alertThreshold\": 10,\n\"controlType\": \"TCT_ATM_WITHDRAW\",\n\"declineThreshold\": 100,\n\"isControlEnabled\": true,\n\"shouldAlertOnDecline\": true,\n\"shouldDeclineAll\": false\n}\n]\n},\n\"forceEnrollment\": true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/api/consumertransactioncontrols/batch",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"consumertransactioncontrols",
+						"batch"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

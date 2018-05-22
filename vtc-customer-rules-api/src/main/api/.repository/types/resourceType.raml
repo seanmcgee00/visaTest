@@ -1,0 +1,10 @@
+#%RAML 1.0 DataType
+displayName: resourceType
+description: Response resource container.
+properties: 
+  status:
+    required: true
+    type: !include baseTypes/statusType.raml
+  callBackSettings:
+    required: true
+    type: !include baseTypes/callBackSettingsType.raml

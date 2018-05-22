@@ -1,0 +1,322 @@
+{
+"receivedTimestamp": "2017-03-21 05:17:25.753",
+"processingTimeinMs": 87,
+"resource": {
+"controlDocuments": [
+{
+"transactionControlDocument": {
+"documentID": "ctc-vd-871b3f95-9569-4087-a85a-d064466c711f",
+"transactionControls": [
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_E_COMMERCE"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_ATM_WITHDRAW"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_AUTO_PAY"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_BRICK_AND_MORTAR"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_CROSS_BORDER"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_FUNDS_TRANSFER"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_CONTACTLESS"
+}
+],
+"lastUpdateTimeStamp": "2017-03-21 05:13:33"
+}
+},
+{
+"transactionControlDocument": {
+"documentID": "ctc-vd-871b3f95-9569-4087-a85a-d064466c711f",
+"lastUpdateTimeStamp": "2017-03-21 05:11:45"
+}
+},
+{
+"transactionControlDocument": {
+"documentID": "ctc-vd-857a8766-160b-498d-820f-bf4339949c1b",
+"transactionControls": [
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_ATM_WITHDRAW"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_AUTO_PAY"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_BRICK_AND_MORTAR"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_CROSS_BORDER"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_FUNDS_TRANSFER"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_CONTACTLESS"
+}
+],
+"lastUpdateTimeStamp": "2017-03-21 05:06:43"
+}
+},
+{
+"transactionControlDocument": {
+"documentID": "ctc-vd-857a8766-160b-498d-820f-bf4339949c1b",
+"transactionControls": [
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_E_COMMERCE"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_ATM_WITHDRAW"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_AUTO_PAY"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_BRICK_AND_MORTAR"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_CROSS_BORDER"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_FUNDS_TRANSFER"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 200,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_CONTACTLESS"
+}
+],
+"lastUpdateTimeStamp": "2017-03-21 05:03:53"
+}
+},
+{
+"transactionControlDocument": {
+"documentID": "ctc-vd-857a8766-160b-498d-820f-bf4339949c1b",
+"transactionControls": [
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_E_COMMERCE"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_ATM_WITHDRAW"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_AUTO_PAY"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_BRICK_AND_MORTAR"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_CROSS_BORDER"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_FUNDS_TRANSFER"
+},
+{
+"isControlEnabled": true,
+"shouldDeclineAll": false,
+"shouldAlertOnDecline": false,
+"declineThreshold": 100,
+"alertThreshold": 10,
+"userIdentifier": "Abhishek",
+"shouldTargetSpecificCard": false,
+"controlType": "TCT_CONTACTLESS"
+}
+],
+"lastUpdateTimeStamp": "2017-03-21 04:59:20"
+}
+},
+{
+"transactionControlDocument": {
+"documentID": "ctc-vd-857a8766-160b-498d-820f-bf4339949c1b",
+"lastUpdateTimeStamp": "2017-03-21 04:56:25"
+}
+}
+]
+}
+}

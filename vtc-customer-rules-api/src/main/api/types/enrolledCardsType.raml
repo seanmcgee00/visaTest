@@ -1,0 +1,18 @@
+#%RAML 1.0 DataType
+displayName: enrolledCards
+maxItems: 500
+uniqueItems: true
+description: List of valid cards added to be enrolled. Max length is 500.
+type: array
+items:
+  type: object
+  properties:
+    accountIdentifier:
+      required: true
+      type: !include baseTypes/accountIdentifierType.raml
+    userIdentifier:
+      required: false
+      type: !include baseTypes/userIdentifierType.raml
+    userInformation:
+      required: false
+      type: !include baseTypes/userInformationType.raml

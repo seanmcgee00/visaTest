@@ -1,0 +1,98 @@
+{
+"receivedTimestamp": "2017-06-08 10:08:42.898",
+"processingTimeinMs": 28,
+"resource": {
+"accountInquiryResponse": [
+{
+"status": "ENROLLED",
+"primaryAccountNumber": "222222XXXXXXX0000",
+"controlDocuments": [
+{
+"documentID": "ctc-ip-d484dc28-ac64-48f9-86f2-468a27e0eec7",
+"globalControls":[ {
+  "isControlEnabled": true,
+  "shouldDeclineAll": false,
+  "shouldAlertOnDecline": true,
+  "declineThreshold": 8000,
+  "alertThreshold": 50,
+  "userIdentifier": "Abhishek",
+  "spendLimit": {
+    "type": "LMT_DAY",
+    "currentPeriodSpend": 680,
+    "declineThreshold": 2000,
+    "alertThreshold": 1000,
+    "timeZoneID": "GMT",
+    "currentPeriodEnd": "2017-06-05 23:59:59"
+    },
+  "cardDetail": {
+    "nameOnCard": "ca93551fa98ffdcfbf457efc4dd88645",
+    "sequenceOnCard": "1"
+  },
+  "shouldTargetSpecificCard": true
+}],
+"lastUpdateTimeStamp": "2017-05-29 21:10:54"
+},
+{
+"documentID": "ctc-ip-98b195ed-138f-49a5-bc4e-cdc986e79960",
+"lastUpdateTimeStamp": "2017-06-05 10:49:54"
+}
+],
+"allAvailableControls": {
+"ruleCategories": [
+"PCT_GLOBAL",
+"PCT_GEO",
+"PCT_TRANSACTION"
+],
+"merchantTypeRules": [
+"MCT_GAMBLING",
+"MCT_APPAREL_AND_ACCESSORIES",
+"MCT_AIRFARE"
+],
+"transactionTypeRules": [
+"TCT_ATM_WITHDRAW",
+"TCT_BRICK_AND_MORTAR",
+"TCT_AUTO_PAY",
+"TCT_E_COMMERCE",
+"TCT_CONTACTLESS",
+"TCT_FUNDS_TRANSFER"
+]
+}
+},
+{
+"status": "ENROLLED",
+"documentID": "ctc-ip-98b195ed-138f-49a5-bc4e-cdc986e79960",
+"controlDocuments": [
+{
+"documentID": "ctc-ip-98b195ed-138f-49a5-bc4e-cdc986e79960",
+"lastUpdateTimeStamp": "2017-06-05 10:49:54"
+}
+],
+"allAvailableControls": {
+"ruleCategories": [
+"PCT_GLOBAL",
+"PCT_GEO",
+"PCT_TRANSACTION"
+],
+"merchantTypeRules": [
+"MCT_GAMBLING",
+"MCT_APPAREL_AND_ACCESSORIES",
+"MCT_AIRFARE"
+],
+"transactionTypeRules": [
+"TCT_ATM_WITHDRAW",
+"TCT_BRICK_AND_MORTAR",
+"TCT_AUTO_PAY",
+"TCT_E_COMMERCE",
+"TCT_CONTACTLESS",
+"TCT_FUNDS_TRANSFER"
+]
+}
+},
+{
+"status": "NOT_ENROLLED",
+"documentID": "ip-98b195ed-138f-49a5-bc4e-cdc986e79960",
+"controlDocuments": [ ]
+}
+]
+}
+}

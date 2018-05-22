@@ -1,0 +1,7 @@
+#%RAML 1.0 DataType
+
+displayName: alertThresholdType
+type: number
+format: double
+example: 1
+description: 'Alert threshold amount in sponsor bank currency. If alerting service is enabled, and a decision type of "COMPLETE" is received, and cardholderBillAmount in Authorize Transaction request exceeds this amount, all qualifying transactions for this control will receive an alert message posted to the application ID Callback endpoint.'

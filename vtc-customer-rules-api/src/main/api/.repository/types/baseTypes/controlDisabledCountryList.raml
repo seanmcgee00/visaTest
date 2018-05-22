@@ -1,0 +1,9 @@
+#%RAML 1.0 DataType
+
+displayName: controlDisabledCountryListType
+description: If provided, the associated control will not be applicable in the defined countries list. This should be an uppercase ISO 3166 3-letter country code.
+type: array
+items:
+  required: true
+  example: 'IRL,NLZ,USA'
+  type: string

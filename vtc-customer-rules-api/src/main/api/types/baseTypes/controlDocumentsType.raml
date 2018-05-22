@@ -1,0 +1,24 @@
+#%RAML 1.0 DataType
+displayName: controlDocument
+type: array
+items:
+  type: object
+  properties: 
+    documentID:
+      required: false
+      type: !include documentIDType.raml
+    isPartOfGroupControl:
+      required: false
+      type: !include isPartOfGroupControlType.raml
+    lastUpdateTimeStamp:
+      required: false
+      type: !include lastUpdateTimeStampType.raml
+    globalControls:
+      required: false
+      type: !include ../globalControlsType.raml
+    merchantControls:
+      required: false
+      type: !include ../merchantControlsType.raml
+    transactionControls:
+      required: false
+      type: !include ../transactionControlsType.raml

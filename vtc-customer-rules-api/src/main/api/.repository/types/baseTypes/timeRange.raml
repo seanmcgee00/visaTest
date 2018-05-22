@@ -1,0 +1,12 @@
+#%RAML 1.0 DataType
+
+displayName: timeRange
+description: 'When provided, the control will only be triggered when the transaction takes place within the provided time range. The time data should be specified in GMT.'
+type: object
+properties:
+  endTime:
+    required: true
+    type: !include endTime.raml
+  startTime:
+    required: true
+    type: !include startTime.raml

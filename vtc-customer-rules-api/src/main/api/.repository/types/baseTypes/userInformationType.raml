@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+displayName: userInformationType
+description: Object to provide the ability to carry additional information about the user that defined the control.
+properties: 
+  applicationDefinedAttributes:
+    required: false
+    type: !include applicationDefinedAttributesType.raml
+  bankingIdentifier:
+    required: false
+    type: !include bankingIdentifierType.raml
+  name:
+    required: true
+    type: !include nameType.raml

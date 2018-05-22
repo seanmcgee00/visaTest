@@ -1,0 +1,7 @@
+#%RAML 1.0 DataType
+displayName: spendLimitDeclineThresholdType
+required: true
+type: number
+format: double
+description: Maximum accumulated spend for the time period defined by the type value. If a transaction qualifies for this control and the transaction amount when added to the currentPeriodSpend value is greater than this value, then the transaction should be declined.
+example: 50.0

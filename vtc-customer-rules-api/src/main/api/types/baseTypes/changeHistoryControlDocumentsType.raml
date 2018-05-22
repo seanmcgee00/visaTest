@@ -1,0 +1,9 @@
+#%RAML 1.0 DataType
+displayName: changeHistoryControlDocuments
+type: array
+items:
+  type: object
+  properties:
+    transactionControlDocument:
+      required: false
+      type: !include transactionControlDocumentType.raml

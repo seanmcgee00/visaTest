@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+displayName: collectionResourceOfTransactionControlDocumentType
+description: OK
+properties: 
+  processingTimeinMs:
+    required: true
+    type: !include baseTypes/processingTimeinMs.raml
+  receivedTimestamp:
+    required: true
+    type: !include baseTypes/receivedTimestamp.raml
+  resource:
+    required: true
+    type: !include baseTypes/resourceType.raml

@@ -1,0 +1,26 @@
+#%RAML 1.0 DataType
+description: Response resource container.
+type: object
+properties:
+  status:
+    required: false
+    example: SUCCESS
+    description: 'The status of the call whether SUCCESS, PARTIAL_SUCCESS or FAILURE.'
+    type: string
+  disqualifyingCards:
+    required: false
+    description: List of disqualifying cards information. If few cards are not qualifying and eligible to be added to the group then those rejected cards will be returned in response with partial success. In that case http status code will be 207. Disqualifying Cards will not be visible when http status code is 200.
+    type: array
+    items:
+      required: true
+      type: object
+      properties:
+        cards:
+          required: true
+          description: List of disqualifying cards.
+          type: array
+        description:
+          required: true
+          example: Example
+          description: Reason for disqualification.
+          type: string

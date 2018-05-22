@@ -1,0 +1,13 @@
+#%RAML 1.0 DataType
+displayName: callBackSettingsType
+description: Alert notification callback settings
+properties: 
+  callBackEndpoint:
+    required: true
+    type: !include callBackEndpointType.raml
+  isCallBackDisabled:
+    required: true
+    type: !include isCallBackDisabledType.raml
+  iscallBackEndpointLocal:
+    required: false
+    type: !include iscallBackEndpointLocalType.raml

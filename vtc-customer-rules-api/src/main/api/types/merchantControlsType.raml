@@ -1,0 +1,46 @@
+#%RAML 1.0 DataType
+displayName: merchantControls
+type: array
+description: If provided, includes the list of defined Merchant Controls that have been configured for the card.
+items:
+  type: object
+  properties:
+        alertThreshold:
+          required: false
+          type: !include baseTypes/alertThreshold.raml
+        controlType:
+          required: true
+          type: !include baseTypes/controlType.raml
+        declineThreshold:
+          required: false
+          type: !include baseTypes/declineThreshold.raml
+        isControlEnabled:
+          required: true
+          type: !include baseTypes/isControlEnabled.raml
+        shouldAlertOnDecline:
+          required: false
+          type: !include baseTypes/shouldAlertOnDecline.raml
+        shouldDeclineAll:
+          required: true
+          type: !include baseTypes/shouldDeclineAll.raml
+        shouldTargetSpecificCard:
+          required: false
+          type: !include baseTypes/shouldTargetSpecificCardType.raml
+        userIdentifier:
+          required: false
+          type: !include baseTypes/userIdentifierType.raml
+        cardDetail:
+          required: false
+          type: !include baseTypes/cardDetailType.raml
+        filterByCountry:
+          required: false
+          type: !include baseTypes/filterByCountry.raml
+        spendLimit:
+          required: false
+          type: !include baseTypes/spendLimit.raml
+        timeRange:
+          required: false
+          type: !include baseTypes/timeRange.raml
+        userInformation:
+          required: false
+          type: !include baseTypes/userInformationType.raml
